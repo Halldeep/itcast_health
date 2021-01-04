@@ -24,7 +24,6 @@ public class CheckItemController {
     //新增检查项
     @RequestMapping("/add")
     public Result add(@RequestBody CheckItem checkItem){
-        System.out.println(checkItem.getCode());
         try{
             checkItemService.add(checkItem);
         }catch (Exception e){
@@ -40,6 +39,19 @@ public class CheckItemController {
     public PageResult findPage(@RequestBody QueryPageBean queryPageBean){
         PageResult pageResult = checkItemService.pageQuery(queryPageBean);
         return pageResult;
+    }
+
+    //删除检查项
+    @RequestMapping("/delete")
+    public Result delete(Integer id){
+        try{
+            checkItemService.deleteById(id);
+        }catch (Exception e){
+            e.printStackTrace();
+            //服务调用失败
+            return new Result(false, MessageConstant.DELETE_CHECKITEM_FAIL);
+        }
+        return new Result(true, MessageConstant.DELETE_CHECKITEM_SUCCESS);
     }
 
 }
