@@ -68,8 +68,9 @@ public class CheckGroupServiceImpl implements CheckGroupService {
     //建立检查组和检查项多对多关系
     public void setCheckGroupAndCheckItem(Integer checkGroupId,Integer[] checkitemIds){
         if(checkitemIds != null && checkitemIds.length > 0){
+            Map<String,Integer> map = null;
             for (Integer checkitemId : checkitemIds) {
-                Map map = new HashMap<String,Integer>();
+                map = new HashMap<String,Integer>();
                 map.put("checkgroupId",checkGroupId);
                 map.put("checkitemId",checkitemId);
                 checkGroupDao.setCheckGroupAndCheckItem(map);

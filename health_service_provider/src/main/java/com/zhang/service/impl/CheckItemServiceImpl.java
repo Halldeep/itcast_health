@@ -43,6 +43,10 @@ public class CheckItemServiceImpl implements CheckItemService {
         return new PageResult(total,rows);
     }
 
+    public List<CheckItem> findAll() {
+        return checkItemDao.findAll();
+    }
+
     //根据id删除检查项
     public void deleteById(Integer id) {
         //判断当前检查项是否关联到检查组

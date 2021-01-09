@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.itheima.dao.CheckGroupDao">
+<mapper namespace="com.zhang.dao.CheckGroupDao">
     <!--插入检查组数据-->
-    <insert id="add" parameterType="com.itheima.pojo.CheckGroup">
+    <insert id="add" parameterType="com.zhang.pojo.CheckGroup">
         <!--通过mybatis框架提供的selectKey标签获得自增产生的ID值-->
         <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
             select LAST_INSERT_ID()
@@ -21,7 +21,7 @@
     </insert>
 
     <!--根据条件进行查询-->
-    <select id="findByCondition" parameterType="string" resultType="com.itheima.pojo.CheckGroup">
+    <select id="findByCondition" parameterType="string" resultType="com.zhang.pojo.CheckGroup">
         select * from t_checkgroup
         <if test="value != null and value != '' and value.length > 0">
             where code = #{value} or name = #{value} or helpCode = #{value}
@@ -29,7 +29,7 @@
     </select>
 
     <!--根据ID查询-->
-    <select id="findById" parameterType="int" resultType="com.itheima.pojo.CheckGroup">
+    <select id="findById" parameterType="int" resultType="com.zhang.pojo.CheckGroup">
         select * from t_checkgroup where id = #{id}
     </select>
 
@@ -39,7 +39,7 @@
     </select>
 
     <!--根据ID动态修改检查组相关字段-->
-    <update id="edit" parameterType="com.itheima.pojo.CheckGroup">
+    <update id="edit" parameterType="com.zhang.pojo.CheckGroup">
         update t_checkgroup
         <set>
             <if test="name != null">

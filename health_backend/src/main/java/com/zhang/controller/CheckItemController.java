@@ -10,6 +10,8 @@ import com.zhang.pojo.CheckItem;
 import com.zhang.service.CheckItemService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * 检查项管理
  */
@@ -39,6 +41,13 @@ public class CheckItemController {
     public PageResult findPage(@RequestBody QueryPageBean queryPageBean){
         PageResult pageResult = checkItemService.pageQuery(queryPageBean);
         return pageResult;
+    }
+
+    //检查项分页查询
+    @RequestMapping("/findAll")
+    public Result findAll(){
+        List<CheckItem> all = checkItemService.findAll();
+        return new Result(true, MessageConstant.QUERY_CHECKITEM_SUCCESS,all);
     }
 
     //删除检查项

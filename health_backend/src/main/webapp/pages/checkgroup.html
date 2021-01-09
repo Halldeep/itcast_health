@@ -330,6 +330,11 @@
                         pageSize:this.pagination.pageSize,
                         queryString:this.pagination.queryString
                     };
+                    //分页查询数据异常解决
+                    if(param.queryString){
+                        param.currentPage = 1;
+                        this.pagination.currentPage = 1;
+                    }
                     //发送ajax请求，提交分页相关参数
                     axios.post("/checkgroup/findPage.do",param).then((res) => {
                         //为VUE对象的模型数据赋值，基于双向数据绑定展示到页面

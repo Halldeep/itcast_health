@@ -5,6 +5,7 @@ import com.zhang.pojo.CheckItem;
 import org.apache.ibatis.annotations.*;
 
 import javax.ws.rs.DELETE;
+import java.util.List;
 
 @Mapper
 public interface CheckItemDao {
@@ -13,11 +14,9 @@ public interface CheckItemDao {
             "(#{code},#{name},#{sex},#{age},#{price},#{type},#{remark},#{attention})")
     void add(CheckItem checkItem);
 
-
-
     @Select({"<script>","SELECT * FROM t_checkitem ",
             "<if test=\"value != null and value.length > 0\">",
-            "WHERE code = #{value} or name = #{value}",
+                "WHERE code = #{value} or name = #{value}",
             "</if>",
             "</script>"})
     Page<CheckItem> selectByCondition(String value);
@@ -34,6 +33,10 @@ public interface CheckItemDao {
             "FROM t_checkitem " +
             "WHERE id = #{id}")
     CheckItem findById(Integer id);
+
+    @Select("SELECT * " +
+            "FROM t_checkitem ")
+    List<CheckItem> findAll();
 
     @Update({"<script>","update t_checkitem ",
             "<set>",
