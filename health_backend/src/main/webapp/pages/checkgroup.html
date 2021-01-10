@@ -88,7 +88,7 @@
                     </div>
                     <!-- 新增标签弹层 -->
                     <div class="add-form">
-                        <el-dialog title="新增检查组" :visible.sync="dialogFormVisible">
+                        <el-dialog title="新增检查组" :visible.sync="dialogFormVisible" v-if="dialogFormVisible">
                             <template>
                                 <el-tabs v-model="activeName" type="card">
                                     <el-tab-pane label="基本信息" name="first">
@@ -172,7 +172,7 @@
 
                     <!-- 编辑标签弹层 -->
                     <div class="add-form">
-                        <el-dialog title="编辑检查组" :visible.sync="dialogFormVisible4Edit">
+                        <el-dialog title="编辑检查组" :visible.sync="dialogFormVisible4Edit" v-if="dialogFormVisible4Edit">
                             <template>
                                 <el-tabs v-model="activeName" type="card">
                                     <el-tab-pane label="基本信息" name="first">
@@ -406,6 +406,13 @@
                 },
                 // 删除
                 handleDelete(row) {
+                    axios.get("/checkgroup/.do?id=" + row.id).then((res) => {
+                        if(res.data.flag){
+                            this.checkitemIds = res.data.data;
+                        }else{
+                            this.$message.error(res.data.message);
+                        }
+                    });
                 }
             }
         })
