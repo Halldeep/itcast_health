@@ -41,6 +41,18 @@ public class CheckGroupController {
         return checkGroupService.pageQuery(queryPageBean);
     }
 
+    //查询全部检查组
+    @RequestMapping("/findAll")
+    public Result findAll(){
+        try{
+            List<CheckGroup> checkGroups = checkGroupService.findAll();
+            return new Result(true,MessageConstant.QUERY_CHECKGROUP_SUCCESS,checkGroups);//查询成功
+        }catch (Exception e){
+            e.printStackTrace();
+            return new Result(false, MessageConstant.QUERY_CHECKGROUP_FAIL);//查询失败
+        }
+    }
+
     //根据ID查询检查组
     @RequestMapping("/findById")
     public Result findById(Integer id){

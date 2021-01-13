@@ -33,6 +33,10 @@ public interface CheckGroupDao {
             "WHERE id = #{id}")
     CheckGroup findById(Integer id);
 
+    @Select("SELECT * " +
+            "FROM t_checkgroup ")
+    List<CheckGroup> findAll();
+
     @Select("SELECT checkitem_id " +
             "FROM t_checkgroup_checkitem " +
             "WHERE checkgroup_id = #{id}")
