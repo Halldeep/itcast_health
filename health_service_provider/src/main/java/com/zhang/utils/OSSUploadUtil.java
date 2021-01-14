@@ -51,6 +51,8 @@ public class OSSUploadUtil {
 	 * 初始化
 	 */
 	public static void init() {
+		OSSConfig ossClientConfig = new OSSConfig();
+		OSSUploadUtil.setConfigInfo(ossClientConfig);
 		ossClient = new OSSClient(ENDPOINT, credentialsProvider, null);
 	}
 

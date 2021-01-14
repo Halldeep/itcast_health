@@ -261,7 +261,7 @@
                     //设置模型数据（图片名称），后续提交ajax请求时会提交到后台最终保存到数据库
                     this.formData.img = response.data;
                 },
-                //上传图片之前执行
+                //上传图片之前执行，对文件类型进行校验
                 beforeAvatarUpload(file) {
 				  const isJPG = file.type === 'image/jpeg';
 				  const isLt2M = file.size / 1024 / 1024 < 2;

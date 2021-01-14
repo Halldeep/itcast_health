@@ -6,11 +6,8 @@ import java.io.InputStream;
 import java.util.Properties;
  
 /**
- * @description: 杨不易网站:www.yangbuyi.top
- * @program: yangbuyispringcloudparent
  * @ClassName: SystemConfig
  * @create: 2020-08-12 00:04
- * @author: yangbuyi
  * @since： JDK1.8
  * @SystemConfig:
  **/

@@ -3,11 +3,8 @@ package com.zhang.utils.config;
 import java.io.IOException;
  
 /**
- * @description: 杨不易网站:www.yangbuyi.top
- * @program: yangbuyispringcloudparent
  * @ClassName: OSSConfig
  * @create: 2020-08-12 00:04
- * @author: yangbuyi
  * @since： JDK1.8
  * @OSSConfig:
  **/
